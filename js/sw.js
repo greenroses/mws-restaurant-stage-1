@@ -1,10 +1,9 @@
 var cacheID = "mws-restaurant-001"
 
 self.addEventListener ("install", event => {
-  event.waitUtil (
-    caches.open(cacheID).then (cache => {
-      return cache;
-      .addAll([
+  event.waitUntil (
+    caches.open(cacheID).then(cache => {
+      return cache.addAll([
         "/",
         "/index.html",
         "/restaurant.html",
@@ -14,11 +13,9 @@ self.addEventListener ("install", event => {
         "/js/dbhelper.js",
         "/js/main.js",
         "/js/restaurant_info.js",
+        "/img/na.png",
         "js/register.js"
-      ])
-      .catch (error=> {
-        console.log("Caches open failed: " + error);
-      });
+      ]);
     })
   );
 });
@@ -27,7 +24,7 @@ self.addEventListener ("fetch", event => {
   let cacheRequest = event.request;
   let cacheUrlObj = new url(event.request.url);
   if (event.request.url.indexOf("restraurant.html") > -1) {
-    const cacheURL = restaurant.html;
+    const cacheURL = "restaurant.html";
     cacheRequest = new Request(cacheURL);
   }
 
@@ -50,8 +47,8 @@ self.addEventListener ("fetch", event => {
             return caches.match("/img/na.png");
           }
           return new Response("Application is not connected to the Internet", {
-            status 404,
-            statusText "Application is not connected to the Internet"
+            status: 404,
+            statusText: "Application is not connected to the Internet"
           });
         })
       );
