@@ -124,6 +124,12 @@ nav h1 a {
     color: #01447e;
     text-decoration: underline;
 }
+/* aria-current */
+nav.breadcrumb [aria-current = "page"] {
+	color: #000;
+	font-weight: 700;
+	text-decoration: none;
+}
 /* ====================== Map ====================== */
 #map {
   height: 400px;
@@ -323,7 +329,7 @@ h3{
   border-top: 1px solid #fff;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 30px 40px 30px;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -341,11 +347,11 @@ h3{
     border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
-  margin: 0 0 30px;
+  margin: auto;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 20px;
   position: relative;
-  width: 85%;
+  max-width: 100%;
 }
 #reviews-list li p {
   margin: 0 0 10px;
